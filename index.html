@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization | Jadwal Kegiatan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">O</div>
+            <div>
+                <h2>Organize.</h2>
+                <small>Management System</small>
+            </div>
+        </div>
+
+        <div class="menu-title">MENU UTAMA</div>
+
+        <nav class="navigation">
+            <button class="nav-link active" data-page="dashboard">
+                <span>▦</span> Dashboard
+            </button>
+
+            <button class="nav-link" data-page="agenda">
+                <span>▤</span> Semua Agenda
+            </button>
+
+            <button class="nav-link" data-page="tambah">
+                <span>＋</span> Tambah Kegiatan
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-decoration">✦</div>
+            <h3>Stay Organized!</h3>
+            <p>Rencanakan kegiatan dengan lebih mudah dan teratur.</p>
+        </div>
+
+        <div class="sidebar-footer">
+            <span>© 2026 Organize.</span>
+        </div>
+    </aside>
+
+
+    <!-- KONTEN UTAMA -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <div class="topbar">
+            <div>
+                <p class="breadcrumb">Pages / <span id="namaHalaman">Dashboard</span></p>
+                <h2 id="judulHalaman">Dashboard</h2>
+            </div>
+
+            <div class="topbar-right">
+                <div class="today-box">
+                    <span>◷</span>
+                    <span id="tanggalHariIni"></span>
+                </div>
+                <div class="profile">
+                    <div class="profile-avatar">J</div>
+                    <div>
+                        <strong>Admin Organisasi</strong>
+                        <small>Jelita astiani</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- HALAMAN DASHBOARD -->
+        <section class="page active" id="dashboardPage">
+
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <span class="welcome-label">ORGANIZATION DASHBOARD</span>
+                    <h1>Selamat Datang! 👋</h1>
+                    <p>Kelola dan pantau seluruh kegiatan organisasi dalam satu tempat.</p>
+                    <button class="banner-button" data-go="tambah">
+                        + Buat Agenda Baru
+                    </button>
+                </div>
+                <div class="banner-art">
+                    <div class="art-circle">✦</div>
+                    <div class="art-calendar">
+                        <span>YOUR SCHEDULE</span>
+                        <strong>PLAN</strong>
+                        <span>ORGANIZE · ACHIEVE</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- STATISTIK -->
+            <div class="section-heading">
+                <div>
+                    <h3>Ringkasan Kegiatan</h3>
+                    <p>Informasi singkat agenda organisasi.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-brown">▤</div>
+                    <div>
+                        <p>Total Agenda</p>
+                        <h2 id="totalAgenda">0</h2>
+                        <small>Seluruh kegiatan</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-gold">◷</div>
+                    <div>
+                        <p>Agenda Mendatang</p>
+                        <h2 id="agendaMendatang">0</h2>
+                        <small>Kegiatan berikutnya</small>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-green">✓</div>
+                    <div>
+                        <p>Agenda Selesai</p>
+                        <h2 id="agendaSelesai">0</h2>
+                        <small>Kegiatan yang telah lewat</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAFTAR AGENDA DASHBOARD -->
+            <div class="content-grid">
+
+                <div class="panel agenda-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Agenda Terdekat</h3>
+                            <p>Kegiatan yang akan dilaksanakan.</p>
+                        </div>
+                        <button class="text-button" data-go="agenda">
+                            Lihat Semua →
+                        </button>
+                    </div>
+
+                    <div id="agendaTerdekat" class="agenda-list"></div>
+                </div>
+
+                <div class="panel info-panel">
+                    <div class="info-symbol">✦</div>
+                    <span class="info-label">ORGANIZATION TIPS</span>
+                    <h3>Rencanakan Hari Ini, Sukseskan Kegiatan Esok Hari.</h3>
+                    <p>
+                        Pastikan setiap kegiatan memiliki jadwal dan lokasi
+                        yang jelas agar seluruh anggota dapat mempersiapkan diri.
+                    </p>
+                    <div class="info-line"></div>
+                    <small>Manage your time, manage your success.</small>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- HALAMAN SEMUA AGENDA -->
+        <section class="page" id="agendaPage">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Semua Agenda Kegiatan</h3>
+                        <p>Kelola seluruh jadwal kegiatan organisasi.</p>
+                    </div>
+
+                    <button class="primary-button" data-go="tambah">
+                        + Tambah Agenda
+                    </button>
+                </div>
+
+                <div class="search-area">
+                    <span>⌕</span>
+                    <input type="search" id="pencarian"
+                        placeholder="Cari nama kegiatan atau lokasi...">
+                </div>
+
+                <div id="semuaAgenda" class="all-agenda-list"></div>
+            </div>
+
+        </section>
+
+
+        <!-- HALAMAN TAMBAH AGENDA -->
+        <section class="page" id="tambahPage">
+
+            <div class="form-layout">
+
+                <div class="panel form-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3 id="judulForm">Buat Agenda Baru</h3>
+                            <p>Lengkapi informasi kegiatan di bawah ini.</p>
+                        </div>
+                        <div class="form-icon">✎</div>
+                    </div>
+
+                    <form id="agendaForm">
+
+                        <div class="form-group">
+                            <label for="nama">Nama Kegiatan</label>
+                            <input type="text" id="nama"
+                                placeholder="Contoh: Rapat Pengurus Organisasi"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tanggal">Tanggal Kegiatan</label>
+                            <input type="date" id="tanggal" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lokasi">Lokasi Kegiatan</label>
+                            <input type="text" id="lokasi"
+                                placeholder="Contoh: Aula Sekolah"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keterangan">Keterangan (Opsional)</label>
+                            <textarea id="keterangan" rows="4"
+                                placeholder="Tuliskan informasi tambahan mengenai kegiatan..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="cancel-button" id="batalEdit">
+                                ✓ Simpan Agenda
+                            </button>
+                            <button type="submit" class="primary-button" id="tombolSimpan">
+                                Batal
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="form-side">
+                    <div class="form-side-icon">✦</div>
+                    <h3>Atur Kegiatanmu dengan Mudah</h3>
+                    <p>
+                        Catat setiap agenda organisasi agar tidak ada
+                        kegiatan yang terlewat.
+                    </p>
+                    <div class="side-feature">
+                        <span>✓</span> Jadwal lebih teratur
+                    </div>
+                    <div class="side-feature">
+                        <span>✓</span> Informasi lebih jelas
+                    </div>
+                    <div class="side-feature">
+                        <span>✓</span> Mudah dikelola
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <footer class="main-footer">
+            <span>Organize. — Jadwal Kegiatan Organisasi</span>
+            <span>Designed for better organization ✦</span>
+        </footer>
+
+    </main>
+</div>
+
+<div id="notifikasi" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+<section class="page" id="tambahPage">
+    <div class="panel form-panel">
+        <h3 id="judulForm">Buat Agenda Baru</h3>
+
+        <form id="agendaForm">
+            <div class="form-group">
+                <label for="nama">Nama Kegiatan</label>
+                <input type="text" id="nama" placeholder="Contoh: Rapat Pengurus Organisasi" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal Kegiatan</label>
+                <input type="date" id="tanggal" required>
+            </div>
+            <div class="form-group">
+                <label for="lokasi">Lokasi Kegiatan</label>
+                <input type="text" id="lokasi" placeholder="Contoh: Aula Sekolah" required>
+            </div>
+            <div class="form-group">
+                <label for="keterangan">Keterangan (Opsional)</label>
+                <textarea id="keterangan" rows="4" placeholder="Tuliskan informasi tambahan..."></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="cancel-button" id="batalEdit">Batal</button>
+                <button type="submit" class="primary-button" id="tombolSimpan">✓ Simpan Agenda</button>
+            </div>
+        </form>
+    </div>
+</section>
